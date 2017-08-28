@@ -4,7 +4,23 @@
   <meta charset="utf-8">
   <title>LogReport</title>
   <base href="/">
+	<script>
+    Date.prototype.toTodayMidnight = function(){
+        var yyyy = this.getFullYear();
+        var mm = this.getMonth() < 10 ? "0" + (this.getMonth() + 1) : (this.getMonth() + 1); // getMonth() is zero-based
+        var dd  = this.getDate() < 10 ? "0" + this.getDate() : this.getDate();
+        return "".concat(yyyy).concat("-").concat(mm).concat("-").concat(dd).concat(" ").concat("00:00:00");
+    };
 
+    Date.prototype.toYesterdayMidnight = function(){
+        let yesterday = new Date(this);
+        yesterday.setDate(yesterday.getDate() - 1);
+        let yyyy = yesterday.getFullYear();
+        let mm = yesterday.getMonth() < 10 ? "0" + (yesterday.getMonth() + 1) : (yesterday.getMonth() + 1); // getMonth() is zero-based
+        let dd  = yesterday.getDate() < 10 ? "0" + yesterday.getDate() : yesterday.getDate();
+        return "".concat(yyyy).concat("-").concat(mm).concat("-").concat(dd).concat(" ").concat("00:00:00");
+    };
+    </script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
